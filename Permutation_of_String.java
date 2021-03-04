@@ -19,7 +19,7 @@ class GFG
 	     }
 	     
 	 }
-	 a
+	 
 	 static void allPermutation(String str, String ans){
 	     
 	        
