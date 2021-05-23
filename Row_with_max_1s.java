@@ -34,39 +34,47 @@ public class Main {
 
 class Solution {
     int rowWithMax1s(int arr[][], int n, int m) {
-        // code
         
-        int countMax=0;
-        int maxIdx = -1;
-        for(int i=0; i<n; i++){
-            int temp=count(arr,i,m);
-    
-           
-            // for(int j=0; j<m; j++){
-            //     if(arr[i][j] == 1){
-            //         temp++;
-            //     }
-            // }
+        //O(n2)
+        // int idxMax=-1;
+        // int max=0;
+        
+        // for(int i=0; i<n; i++){
+        //     int count=0;
+        //     for(int j=0; j<m; j++){
             
-            if(temp>countMax){
-                countMax=temp;
-                maxIdx=i;
+        //         if(arr[i][j] == 1){
+        //             count++;
+        //         }
+        //     }
+            
+        //     if(count>max){
+        //         max=count;
+        //         idxMax=i;
+        //     }
+        // }
+
+        //nlog(m)
+        int idxMax=-1;
+        int max=0;
+        
+        for(int i=0; i<n; i++){
+            int count=0;
+            for(int j=m-1; j>=0; j--){
+            
+                if(arr[i][j] == 1){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+            
+            if(count>max){
+                max=count;
+                idxMax=i;
             }
         }
         
-        return maxIdx;
-    }
-    
-    static int count(int arr[][], int i, int col){
-        
-        int j=0;
-        while(j<col){
-            if(arr[i][j] == 1){
-                break;
-            }
-            j++;
-        }
-        
-        return col-j;
+        return idxMax;
     }
 }
