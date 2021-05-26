@@ -55,26 +55,39 @@ class Solution {
         // }
 
         //nlog(m)
+        // int idxMax=-1;
+        // int max=0;
+        
+        // for(int i=0; i<n; i++){
+        //     int count=0;
+        //     for(int j=m-1; j>=0; j--){
+            
+        //         if(arr[i][j] == 1){
+        //             count++;
+        //         }else{
+        //             break;
+        //         }
+        //     }
+            
+        //     if(count>max){
+        //         max=count;
+        //         idxMax=i;
+        //     }
+        // }
+        
+        //O(m+n)
+        
         int idxMax=-1;
-        int max=0;
+        int j=m-1;
         
         for(int i=0; i<n; i++){
-            int count=0;
-            for(int j=m-1; j>=0; j--){
-            
-                if(arr[i][j] == 1){
-                    count++;
-                }else{
-                    break;
-                }
-            }
-            
-            if(count>max){
-                max=count;
+            while(j>=0 && arr[i][j]==1){
+                j--;
                 idxMax=i;
             }
         }
         
         return idxMax;
+   
     }
 }
