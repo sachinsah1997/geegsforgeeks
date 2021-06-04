@@ -50,37 +50,22 @@ class GFG
 
 class Solution
 {
+    
+    static void rev(int arr[], int i, int j){
+        while(i<j){
+            int temp=arr[j];
+            arr[j] = arr[i];
+            arr[i] = temp;
+            j--;
+            i++;
+        }
+    }
+    
     //Function to rotate an array by d elements in counter-clockwise direction. 
     static void rotateArr(int arr[], int d, int n)
     {
-        int j=n-1;
-        int i=0;
-        while(i<j){
-            int temp=arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
-            j--;
-            i++;
-        }
-        j=n-d-1;
-        i=0;
-        while(i<j){
-            int temp=arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
-            j--;
-            i++;
-        }
-        
-        i=n-d;
-        j=n-1;
-        while(i<j){
-            int temp=arr[j];
-            arr[j] = arr[i];
-            arr[i] = temp;
-            j--;
-            i++;
-        }
-      
+        rev(arr,0,n-1);
+        rev(arr,0,n-d-1);
+        rev(arr,n-d,n-1);
     }
 }
