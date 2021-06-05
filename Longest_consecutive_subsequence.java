@@ -65,25 +65,46 @@ class Solution
     //Function to return length of longest subsequence of consecutive integers.
 	static int findLongestConseqSubseq(int arr[], int N)
 	{
-        Map<Integer,Boolean> hMap = new HashMap<>();
+        // Map<Integer,Boolean> hMap = new HashMap<>();
+        
+        // for(int num : arr){
+        //     hMap.put(num,false);
+        // }
+        
+        // for(int num : arr){
+        //     if(!hMap.containsKey(num-1)){
+        //         hMap.put(num, true);
+        //     }
+        // }
+        
+        // int count=0;
+        // for(int num : arr){
+        //     if(hMap.get(num)){
+        //         int temp=0;
+        //         while(hMap.containsKey(num)){
+        //             num++;
+        //             temp++;
+        //         }
+                
+        //         if(temp>count){
+        //             count=temp;
+        //         }
+        //     }
+        // }
+        
+        Set<Integer> hSet = new HashSet<>();
         
         for(int num : arr){
-            hMap.put(num,false);
-        }
-        
-        for(int num : arr){
-            if(!hMap.containsKey(num-1)){
-                hMap.put(num, true);
-            }
+            hSet.add(num);
         }
         
         int count=0;
         for(int num : arr){
-            if(hMap.get(num)){
+            if(!hSet.contains(num-1)){
                 int temp=0;
-                while(hMap.containsKey(num)){
-                    num++;
+                while(hSet.contains(num)){
                     temp++;
+                    num++;
                 }
                 
                 if(temp>count){
@@ -91,6 +112,7 @@ class Solution
                 }
             }
         }
+        
         
         return  count;
 	}
